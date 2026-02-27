@@ -10,25 +10,32 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nEnter a string for UC5:");
-        String input3 = scanner.nextLine();
+        System.out.println("\nEnter a string for UC6:");
+        String input4 = scanner.nextLine();
 
-        Stack<Character> stack1 = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack2 = new Stack<>();
 
-        for (int i = 0; i < input3.length(); i++) {
-            stack1.push(input3.charAt(i));
+        for (int i = 0; i < input4.length(); i++) {
+            char ch = input4.charAt(i);
+            queue.add(ch);
+            stack2.push(ch);
         }
 
-        String reversed = "";
+        boolean isPal = true;
 
-        while (!stack1.isEmpty()) {
-            reversed += stack1.pop();
+        while (!queue.isEmpty() && !stack2.isEmpty()) {
+
+            if (queue.remove() != stack2.pop()) {
+                isPal = false;
+                break;
+            }
         }
 
-        if (input3.equals(reversed)) {
-            System.out.println(input3 + " is a Palindrome (UC5)");
+        if (isPal) {
+            System.out.println(input4 + " is a Palindrome (UC6)");
         } else {
-            System.out.println(input3 + " is Not a Palindrome (UC5)");
+            System.out.println(input4 + " is Not a Palindrome (UC6)");
         }
 
         scanner.close();
