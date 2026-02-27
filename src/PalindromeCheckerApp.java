@@ -10,32 +10,34 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nEnter a string for UC6:");
-        String input4 = scanner.nextLine();
+        System.out.println("\nEnter a string for UC7:");
+        String input5 = scanner.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack2 = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        for (int i = 0; i < input4.length(); i++) {
-            char ch = input4.charAt(i);
-            queue.add(ch);
-            stack2.push(ch);
+        // Insert characters into deque
+        for (int i = 0; i < input5.length(); i++) {
+            deque.addLast(input5.charAt(i));
         }
 
-        boolean isPal = true;
+        boolean isDequePal = true;
 
-        while (!queue.isEmpty() && !stack2.isEmpty()) {
+        // Remove first & last and compare
+        while (deque.size() > 1) {
 
-            if (queue.remove() != stack2.pop()) {
-                isPal = false;
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
+
+            if (front != rear) {
+                isDequePal = false;
                 break;
             }
         }
 
-        if (isPal) {
-            System.out.println(input4 + " is a Palindrome (UC6)");
+        if (isDequePal) {
+            System.out.println(input5 + " is a Palindrome (UC7)");
         } else {
-            System.out.println(input4 + " is Not a Palindrome (UC6)");
+            System.out.println(input5 + " is Not a Palindrome (UC7)");
         }
 
         scanner.close();
